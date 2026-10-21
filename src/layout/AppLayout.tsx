@@ -1,6 +1,9 @@
-import { Outlet } from "react-router";
-import { styled, Box } from "@mui/material";
-import { NavLink } from "react-router";
+import { NavLink, Outlet } from "react-router";
+import { styled, Box, Typography } from "@mui/material";
+import HomeIcon from "@mui/icons-material/Home";
+import SearchIcon from "@mui/icons-material/Search";
+import LibraryHead from "./components/LibraryHead";
+import EmptyPlaylist from "./components/EmptyPlaylist";
 
 const Layout = styled("div")({
   display: "flex",
@@ -17,6 +20,7 @@ const Sidebar = styled("div")(({ theme }) => ({
   flexShrink: 0,
   flexGrow: 0,
   flexDirection: "column",
+  gap: "8px",
   height: "100%",
   [theme.breakpoints.down("sm")]: {
     display: "none",
@@ -34,7 +38,6 @@ const NavList = styled("ul")({
   listStyle: "none",
   padding: "16px",
   margin: 0,
-  marginTop: "20px",
 });
 
 const StyledNavLink = styled(NavLink)(({ theme }) => ({
@@ -42,8 +45,8 @@ const StyledNavLink = styled(NavLink)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   gap: "15px",
-  marginBottom: "17px",
   color: theme.palette.text.secondary,
+  transition: "color 0.2s ease",
   "&:hover": {
     color: theme.palette.text.primary,
   },
@@ -58,14 +61,36 @@ const AppLayout = () => {
       <Sidebar>
         <ContentBox>
           <NavList>
-            <StyledNavLink to="/" end>
-              HOME
-            </StyledNavLink>
-            <StyledNavLink to="/search">SEARCH</StyledNavLink>
+            <li style={{ marginBottom: "17px" }}>
+              <StyledNavLink to="/" end>
+                <HomeIcon />
+                <Typography variant="h2" fontWeight={700}>
+                  Home
+                </Typography>
+              </StyledNavLink>
+            </li>
+            <li>
+              <StyledNavLink to="/search">
+                <SearchIcon />
+                <Typography variant="h2" fontWeight={700}>
+                  Search
+                </Typography>
+              </StyledNavLink>
+            </li>
           </NavList>
         </ContentBox>
+
+        <ContentBox sx={{ flex: 1, padding: "8px" }}>
+          <LibraryHead />
+          <EmptyPlaylist />
+        </ContentBox>
       </Sidebar>
-      <Outlet />
+
+      <ContentBox
+        sx={{ flex: 1, minWidth: 0, padding: "20px", overflowY: "auto" }}
+      >
+        <Outlet />
+      </ContentBox>
     </Layout>
   );
 };

@@ -4,22 +4,22 @@ const theme = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: "#1ed760",
+      main: "#ff7a45",
     },
     secondary: {
       main: "#ffffff",
     },
     background: {
-      default: "#000",
-      paper: "#121212",
+      default: "#0d0b0a",
+      paper: "#181412",
     },
     text: {
-      primary: "#fff",
-      secondary: "#b3b3b3",
+      primary: "#fff8f2",
+      secondary: "#b8aca4",
     },
     action: {
-      hover: "#282828",
-      active: "#333",
+      hover: "#29221e",
+      active: "#352c27",
     },
   },
   typography: {
