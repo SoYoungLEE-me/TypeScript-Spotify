@@ -1,10 +1,15 @@
-import { NavLink, Outlet } from "react-router";
+import { Suspense } from "react";
+import { NavLink, Outlet, useLocation } from "react-router";
 import { styled, Box, Typography } from "@mui/material";
+import { ErrorBoundary } from "react-error-boundary";
+import { QueryErrorResetBoundary } from "@tanstack/react-query";
 import HomeIcon from "@mui/icons-material/Home";
 import SearchIcon from "@mui/icons-material/Search";
 import LibraryHead from "./components/LibraryHead";
 import EmptyPlaylist from "./components/EmptyPlaylist";
 import Navbar from "./components/Navbar";
+import LoadingSpinner from "../common/components/LoadingSpinner";
+import ErrorMessage from "../common/components/ErrorMessage";
 
 const Layout = styled("div")({
   display: "flex",
@@ -57,6 +62,8 @@ const StyledNavLink = styled(NavLink)(({ theme }) => ({
 }));
 
 const AppLayout = () => {
+  const location = useLocation();
+
   return (
     <Layout>
       <Sidebar>
@@ -98,7 +105,34 @@ const AppLayout = () => {
       >
         <Navbar />
         <Box sx={{ flex: 1, minHeight: 0, overflowY: "auto" }}>
-          <Outlet />
+          <QueryErrorResetBoundary>
+            {({ reset }) => (
+              <ErrorBoundary
+                onReset={reset}
+                resetKeys={[location.pathname]}
+                fallback={
+                  <ErrorMessage errorMessage="데이터를 불러오지 못했어요." />
+                }
+              >
+                <Suspense
+                  fallback={
+                    <Box
+                      sx={{
+                        height: "100%",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <LoadingSpinner />
+                    </Box>
+                  }
+                >
+                  <Outlet />
+                </Suspense>
+              </ErrorBoundary>
+            )}
+          </QueryErrorResetBoundary>
         </Box>
       </ContentBox>
     </Layout>
