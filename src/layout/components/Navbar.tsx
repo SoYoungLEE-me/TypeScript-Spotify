@@ -1,0 +1,20 @@
+import { Box } from "@mui/material";
+import LoginButton from "../../common/components/LoginButton";
+
+const Navbar = () => {
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "flex-end",
+        alignItems: "center",
+        height: "64px",
+        flexShrink: 0,
+      }}
+    >
+      <LoginButton />
+    </Box>
+  );
+};
+
+export default Navbar;

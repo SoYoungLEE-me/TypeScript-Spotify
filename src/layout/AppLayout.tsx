@@ -4,6 +4,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import SearchIcon from "@mui/icons-material/Search";
 import LibraryHead from "./components/LibraryHead";
 import EmptyPlaylist from "./components/EmptyPlaylist";
+import Navbar from "./components/Navbar";
 
 const Layout = styled("div")({
   display: "flex",
@@ -87,9 +88,18 @@ const AppLayout = () => {
       </Sidebar>
 
       <ContentBox
-        sx={{ flex: 1, minWidth: 0, padding: "20px", overflowY: "auto" }}
+        sx={{
+          flex: 1,
+          minWidth: 0,
+          display: "flex",
+          flexDirection: "column",
+          padding: "0 20px 20px",
+        }}
       >
-        <Outlet />
+        <Navbar />
+        <Box sx={{ flex: 1, minHeight: 0, overflowY: "auto" }}>
+          <Outlet />
+        </Box>
       </ContentBox>
     </Layout>
   );
