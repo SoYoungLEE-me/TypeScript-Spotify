@@ -11,6 +11,7 @@ export interface AuthUrlParams {
   scope: string;
   code_challenge: string;
   redirect_uri: string;
+  show_dialog: "true";
 }
 
 export interface ExchangeTokenResponse {

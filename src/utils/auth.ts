@@ -20,9 +20,11 @@ export const getSpotifyAuthUrl = async () => {
       code_challenge_method: "S256",
       code_challenge: codeChallenge,
       redirect_uri: REDIRECT_URI,
+      // 매번 확인 화면을 보여줄 수 있도록
+      show_dialog: "true",
     };
 
     authUrl.search = new URLSearchParams(Object.entries(params)).toString();
-    window.location.href = authUrl.toString(); //spotify 로그인 주소를 연다
+    window.location.href = authUrl.toString();
   }
 };
