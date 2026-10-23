@@ -2,6 +2,7 @@ import { Box, Typography } from "@mui/material";
 import useGetNewReleases from "../../../hooks/useGetNewReleases";
 import CardGrid from "../../../common/MusicCard/CardGrid";
 import Card from "../../../common/MusicCard/Card";
+import { Link } from "react-router";
 
 const NewReleases = () => {
   const { data } = useGetNewReleases();
@@ -20,12 +21,19 @@ const NewReleases = () => {
       ) : (
         <CardGrid>
           {albums.map((album) => (
-            <Card
+            <Link
               key={album.id}
-              image={album.images[0]?.url}
-              name={album.name}
-              artistName={album.artists.map((artist) => artist.name).join(", ")}
-            />
+              to={`/album/${album.id}`}
+              style={{ minWidth: 0 }}
+            >
+              <Card
+                image={album.images[0]?.url}
+                name={album.name}
+                artistName={album.artists
+                  .map((artist) => artist.name)
+                  .join(", ")}
+              />
+            </Link>
           ))}
         </CardGrid>
       )}

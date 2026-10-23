@@ -14,6 +14,9 @@ const SearchWithKeywordPage = lazy(
 );
 const PlaylistDetailPage = lazy(() => import("./pages/PlaylistDetailPage"));
 const PlaylistPage = lazy(() => import("./pages/PlaylistPage"));
+const AlbumDetailPage = lazy(
+  () => import("./pages/AlbumDetailPage/AlbumDetailPage")
+);
 
 import LoadingSpinner from "./common/components/LoadingSpinner";
 import ErrorMessage from "./common/components/ErrorMessage";
@@ -69,6 +72,7 @@ function App() {
                 />
                 <Route path="/playlist/:id" element={<PlaylistDetailPage />} />
                 <Route path="/playlist" element={<PlaylistPage />} />
+                <Route path="/album/:id" element={<AlbumDetailPage />} />
               </Route>
             </Routes>
           </Suspense>

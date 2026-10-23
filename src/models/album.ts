@@ -21,3 +21,19 @@ export interface SimplifiedAlbum {
 export interface GetNewReleasesResponse {
   albums: ApiResponse<SimplifiedAlbum>;
 }
+
+//앨범 상세 정보
+export interface SimplifiedTrack {
+  id: string;
+  name: string;
+  track_number: number;
+  disc_number: number;
+  duration_ms: number;
+  explicit: boolean;
+  artists: SimplifiedArtist[];
+  external_urls: ExternalUrls;
+}
+
+export interface Album extends SimplifiedAlbum {
+  tracks: ApiResponse<SimplifiedTrack>;
+}
