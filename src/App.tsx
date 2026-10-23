@@ -4,6 +4,8 @@ import { lazy, Suspense } from "react";
 import { Box } from "@mui/material";
 import { ErrorBoundary } from "react-error-boundary";
 import { QueryErrorResetBoundary } from "@tanstack/react-query";
+import { useEffect } from "react";
+import useExchangeToken from "./hooks/useExchangeToken";
 
 // Lazy Loading
 import AppLayout from "./layout/AppLayout";
@@ -42,6 +44,18 @@ const CenterBox = ({ children }: { children: React.ReactNode }) => (
 
 function App() {
   const location = useLocation();
+
+  const { mutate: exchangeToken } = useExchangeToken();
+
+  useEffect(() => {
+    const code = new URLSearchParams(window.location.search).get("code");
+    const codeVerifier = localStorage.getItem("code_verifier");
+
+    if (!code || !codeVerifier) return;
+
+    window.history.replaceState(null, "", window.location.pathname);
+    exchangeToken({ code, codeVerifier });
+  }, [exchangeToken]);
 
   return (
     <QueryErrorResetBoundary>

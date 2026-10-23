@@ -1,7 +1,11 @@
 import { Box } from "@mui/material";
 import LoginButton from "../../common/components/LoginButton";
+import useGetCurrentUserProfile from "../../hooks/useGetCurrentUserProfile";
+import ProfileMenu from "./ProfileMenu";
 
 const Navbar = () => {
+  const { data: userProfile } = useGetCurrentUserProfile();
+
   return (
     <Box
       sx={{
@@ -12,7 +16,7 @@ const Navbar = () => {
         flexShrink: 0,
       }}
     >
-      <LoginButton />
+      {userProfile ? <ProfileMenu /> : <LoginButton />}
     </Box>
   );
 };
