@@ -4,7 +4,13 @@ import useGetCurrentUserProfile from "../../hooks/useGetCurrentUserProfile";
 import ProfileMenu from "./ProfileMenu";
 
 const Navbar = () => {
-  const { data: userProfile } = useGetCurrentUserProfile();
+  const { data: userProfile, isLoading } = useGetCurrentUserProfile();
+
+  const renderRight = () => {
+    if (isLoading) return null; //로그인 여부 확인 중에는 아무것도 안보여주기
+    if (userProfile) return <ProfileMenu />;
+    return <LoginButton />;
+  };
 
   return (
     <Box
@@ -16,7 +22,7 @@ const Navbar = () => {
         flexShrink: 0,
       }}
     >
-      {userProfile ? <ProfileMenu /> : <LoginButton />}
+      {renderRight()}
     </Box>
   );
 };

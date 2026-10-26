@@ -6,7 +6,6 @@ import { QueryErrorResetBoundary } from "@tanstack/react-query";
 import HomeIcon from "@mui/icons-material/Home";
 import SearchIcon from "@mui/icons-material/Search";
 import LibraryHead from "./components/LibraryHead";
-import EmptyPlaylist from "./components/EmptyPlaylist";
 import Navbar from "./components/Navbar";
 import LoadingSpinner from "../common/components/LoadingSpinner";
 import ErrorMessage from "../common/components/ErrorMessage";
@@ -89,9 +88,16 @@ const AppLayout = () => {
           </NavList>
         </ContentBox>
 
-        <ContentBox sx={{ flex: 1, padding: "8px" }}>
+        <ContentBox
+          sx={{
+            flex: 1,
+            minHeight: 0,
+            display: "flex",
+            flexDirection: "column",
+            padding: "8px",
+          }}
+        >
           <LibraryHead />
-          <EmptyPlaylist />
           <Library />
         </ContentBox>
       </Sidebar>
