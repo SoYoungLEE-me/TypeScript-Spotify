@@ -10,6 +10,7 @@ import EmptyPlaylist from "./components/EmptyPlaylist";
 import Navbar from "./components/Navbar";
 import LoadingSpinner from "../common/components/LoadingSpinner";
 import ErrorMessage from "../common/components/ErrorMessage";
+import Library from "./components/Library";
 
 const Layout = styled("div")({
   display: "flex",
@@ -91,6 +92,7 @@ const AppLayout = () => {
         <ContentBox sx={{ flex: 1, padding: "8px" }}>
           <LibraryHead />
           <EmptyPlaylist />
+          <Library />
         </ContentBox>
       </Sidebar>
 

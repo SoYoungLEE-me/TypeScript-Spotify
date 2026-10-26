@@ -4,6 +4,12 @@ export interface Image {
   width: number | null;
 }
 
+export interface Owner {
+  id: string;
+  display_name: string | null;
+  external_urls?: ExternalUrls;
+}
+
 export interface ExternalUrls {
   spotify: string;
 }
