@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, useRef, useEffect } from "react";
 import { NavLink, Outlet, useLocation } from "react-router";
 import { styled, Box, Typography } from "@mui/material";
 import { ErrorBoundary } from "react-error-boundary";
@@ -64,6 +64,12 @@ const StyledNavLink = styled(NavLink)(({ theme }) => ({
 const AppLayout = () => {
   const location = useLocation();
 
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    scrollRef.current?.scrollTo({ top: 0 });
+  }, [location.pathname]);
+
   return (
     <Layout>
       <Sidebar>
@@ -112,7 +118,7 @@ const AppLayout = () => {
         }}
       >
         <Navbar />
-        <Box sx={{ flex: 1, minHeight: 0, overflowY: "auto" }}>
+        <Box ref={scrollRef} sx={{ flex: 1, minHeight: 0, overflowY: "auto" }}>
           <QueryErrorResetBoundary>
             {({ reset }) => (
               <ErrorBoundary
