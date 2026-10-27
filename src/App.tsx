@@ -14,7 +14,9 @@ const SearchPage = lazy(() => import("./pages/SearchPage"));
 const SearchWithKeywordPage = lazy(
   () => import("./pages/SearchWithKeywordPage")
 );
-const PlaylistDetailPage = lazy(() => import("./pages/PlaylistDetailPage"));
+const PlaylistDetailPage = lazy(
+  () => import("./pages/PlaylistDetailPage/PlaylistDetailPage")
+);
 const PlaylistPage = lazy(() => import("./pages/PlaylistPage"));
 const AlbumDetailPage = lazy(
   () => import("./pages/AlbumDetailPage/AlbumDetailPage")
