@@ -12,7 +12,6 @@ interface PlaylistTrackListProps {
 }
 
 const PlaylistTrackList = ({ playlistId }: PlaylistTrackListProps) => {
-  // useSuspenseInfiniteQuery → 여기까지 오면 첫 페이지는 이미 있다
   const { data, hasNextPage, isFetchingNextPage, fetchNextPage } =
     useGetPlaylistItems({ playlist_id: playlistId, limit: 20 });
 

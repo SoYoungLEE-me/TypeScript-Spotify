@@ -1,8 +1,14 @@
 import { Box, Typography } from "@mui/material";
-import type { PlaylistItem } from "../../../models/playlist";
+import type { PlayableItem, PlaylistItem } from "../../../models/playlist";
+import type { Track } from "../../../models/track";
 import { formatDuration } from "../../../utils/formatDuration";
 import { formatRelativeDate } from "../../../utils/formatRelativeDate";
 import { hideOnSmall, trackGridSx } from "./trackGrid";
+
+// 노래인지 확인 (true 면 TypeScript 가 이후 코드에서 Track 으로 알아본다)
+const isTrack = (item: PlayableItem): item is Track => {
+  return item.type === "track";
+};
 
 interface PlaylistTrackRowProps {
   index: number;
@@ -10,10 +16,20 @@ interface PlaylistTrackRowProps {
 }
 
 const PlaylistTrackRow = ({ index, playlistItem }: PlaylistTrackRowProps) => {
-  const track = playlistItem.item;
-  if (!track) return null; //삭제된 곡 등은 건너뛴다
+  const item = playlistItem.item;
+  if (!item) return null; // 삭제된 곡 등은 건너뛰도록
 
-  const thumbnail = track.album.images[track.album.images.length - 1]?.url; //가장 작은 이미지
+  // 노래면 앨범 이미지, 에피소드면 에피소드 이미지
+  const images = isTrack(item) ? item.album.images : item.images;
+  const thumbnail = images[images.length - 1]?.url; // 가장 작은 이미지
+
+  // 노래면 가수 이름, 에피소드면 팟캐스트
+  const subText = isTrack(item)
+    ? item.artists.map((artist) => artist.name).join(", ")
+    : "팟캐스트";
+
+  // 노래면 앨범 이름, 에피소드는 앨범이 없음
+  const albumName = isTrack(item) ? item.album.name : "-";
 
   return (
     <Box
@@ -45,10 +61,10 @@ const PlaylistTrackRow = ({ index, playlistItem }: PlaylistTrackRowProps) => {
         />
         <Box sx={{ minWidth: 0 }}>
           <Typography noWrap fontWeight={700}>
-            {track.name}
+            {item.name}
           </Typography>
           <Typography noWrap variant="body2" color="text.secondary">
-            {track.explicit && (
+            {item.explicit && (
               <Box
                 component="span"
                 sx={{
@@ -66,7 +82,7 @@ const PlaylistTrackRow = ({ index, playlistItem }: PlaylistTrackRowProps) => {
                 E
               </Box>
             )}
-            {track.artists.map((artist) => artist.name).join(", ")}
+            {subText}
           </Typography>
         </Box>
       </Box>
@@ -76,7 +92,9 @@ const PlaylistTrackRow = ({ index, playlistItem }: PlaylistTrackRowProps) => {
         variant="body2"
         color="text.secondary"
         sx={hideOnSmall}
-      ></Typography>
+      >
+        {albumName}
+      </Typography>
 
       <Typography
         noWrap
@@ -88,7 +106,7 @@ const PlaylistTrackRow = ({ index, playlistItem }: PlaylistTrackRowProps) => {
       </Typography>
 
       <Typography variant="body2" color="text.secondary">
-        {formatDuration(track.duration_ms)}
+        {formatDuration(item.duration_ms)}
       </Typography>
     </Box>
   );

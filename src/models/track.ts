@@ -2,6 +2,7 @@ import type { ExternalUrls } from "./commonType";
 import type { SimplifiedAlbum, SimplifiedArtist } from "./album";
 
 export interface Track {
+  type: "track";
   id: string;
   name: string;
   duration_ms: number;
