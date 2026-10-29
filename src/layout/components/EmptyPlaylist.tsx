@@ -1,4 +1,5 @@
 import { Button, Card, styled, Typography } from "@mui/material";
+import useCreatePlaylistAction from "../../hooks/useCreatePlaylistAction";
 
 const EmptyPlaylistCard = styled(Card)(({ theme }) => ({
   backgroundColor: theme.palette.action.hover,
@@ -9,6 +10,8 @@ const EmptyPlaylistCard = styled(Card)(({ theme }) => ({
 }));
 
 const EmptyPlaylist = () => {
+  const { createNewPlaylist, isPending } = useCreatePlaylistAction();
+
   return (
     <EmptyPlaylistCard>
       <Typography variant="h2" fontWeight={700}>
@@ -17,7 +20,13 @@ const EmptyPlaylist = () => {
       <Typography variant="body2" color="text.secondary" sx={{ mt: 1, mb: 2 }}>
         It's easy, we'll help you
       </Typography>
-      <Button variant="contained" color="secondary" sx={{ fontWeight: 700 }}>
+      <Button
+        variant="contained"
+        color="secondary"
+        onClick={createNewPlaylist}
+        disabled={isPending}
+        sx={{ fontWeight: 700 }}
+      >
         Create playlist
       </Button>
     </EmptyPlaylistCard>

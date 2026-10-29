@@ -64,3 +64,9 @@ export interface AddItemsToPlaylistRequest {
 export interface AddItemsToPlaylistResponse {
   snapshot_id: string;
 }
+
+export interface CreatePlaylistRequest {
+  name: string;
+  description?: string;
+  public?: boolean;
+}

@@ -6,6 +6,7 @@ import type {
   Playlists,
   AddItemsToPlaylistRequest,
   AddItemsToPlaylistResponse,
+  CreatePlaylistRequest,
 } from "../models/playlist";
 import { spotifyUserGet, spotifyUserPost } from "../utils/userTokenClient";
 
@@ -49,4 +50,11 @@ export const addItemsToPlaylist = async ({
   }
 
   return result;
+};
+
+//플레이리스트 추가
+export const createPlaylist = async (
+  request: CreatePlaylistRequest
+): Promise<Playlist> => {
+  return spotifyUserPost<Playlist>("/me/playlists", request);
 };
