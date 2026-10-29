@@ -2,6 +2,7 @@ import { Avatar, Box, Typography } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import PublicIcon from "@mui/icons-material/Public";
 import type { Playlist } from "../../../models/playlist";
+import CoverImage from "../../../common/components/CoverImage";
 
 interface PlaylistHeaderProps {
   playlist: Playlist;
@@ -52,18 +53,12 @@ const PlaylistHeader = ({ playlist }: PlaylistHeaderProps) => {
           p: 3,
         }}
       >
-        <Box
-          sx={(theme) => ({
-            width: 200,
-            height: 200,
-            flexShrink: 0,
-            borderRadius: "8px",
-            overflow: "hidden",
-            boxShadow: "0 12px 32px rgba(0, 0, 0, 0.5)",
-            background: coverUrl
-              ? `url("${coverUrl}") center / cover`
-              : theme.palette.action.active,
-          })}
+        <CoverImage
+          src={coverUrl}
+          alt={playlist.name}
+          size={200}
+          radius="8px"
+          shadow
         />
 
         <Box sx={{ minWidth: 0 }}>
