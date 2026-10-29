@@ -55,3 +55,12 @@ export type PlaylistItems = ApiResponse<PlaylistItem>;
 export interface Playlist extends Omit<SimplifiedPlaylist, "items" | "tracks"> {
   items?: PlaylistItems; // 내 플레이리스트일 때만 곡 목록이 오고 아니면 정보만 온다
 }
+
+export interface AddItemsToPlaylistRequest {
+  playlist_id: string;
+  uris: string[]; // 추가할 곡들의 uri
+}
+
+export interface AddItemsToPlaylistResponse {
+  snapshot_id: string;
+}

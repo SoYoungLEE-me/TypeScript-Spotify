@@ -32,6 +32,7 @@ export interface SimplifiedTrack {
   explicit: boolean;
   artists: SimplifiedArtist[];
   external_urls: ExternalUrls;
+  uri: string;
 }
 
 export interface Album extends SimplifiedAlbum {

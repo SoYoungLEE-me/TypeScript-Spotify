@@ -4,8 +4,10 @@ import type {
   Playlist,
   PlaylistItems,
   Playlists,
+  AddItemsToPlaylistRequest,
+  AddItemsToPlaylistResponse,
 } from "../models/playlist";
-import { spotifyUserGet } from "../utils/userTokenClient";
+import { spotifyUserGet, spotifyUserPost } from "../utils/userTokenClient";
 
 export const getCurrentUserPlaylists = async ({
   limit,
@@ -30,4 +32,21 @@ export const getPlaylistItems = async ({
     limit,
     offset,
   });
+};
+
+// 플레이리스트에 곡 추가
+export const addItemsToPlaylist = async ({
+  playlist_id,
+  uris,
+}: AddItemsToPlaylistRequest): Promise<AddItemsToPlaylistResponse> => {
+  let result: AddItemsToPlaylistResponse = { snapshot_id: "" };
+
+  for (let i = 0; i < uris.length; i += 100) {
+    result = await spotifyUserPost<AddItemsToPlaylistResponse>(
+      `/playlists/${playlist_id}/items`,
+      { uris: uris.slice(i, i + 100) }
+    );
+  }
+
+  return result;
 };
