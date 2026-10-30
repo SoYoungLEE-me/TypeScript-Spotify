@@ -24,9 +24,13 @@ const loadViewMode = (): ViewMode => {
 
 interface PlaylistTrackListProps {
   playlistId: string;
+  showEmptyMessage?: boolean;
 }
 
-const PlaylistTrackList = ({ playlistId }: PlaylistTrackListProps) => {
+const PlaylistTrackList = ({
+  playlistId,
+  showEmptyMessage,
+}: PlaylistTrackListProps) => {
   const { data, hasNextPage, isFetchingNextPage, fetchNextPage } =
     useGetPlaylistItems({ playlist_id: playlistId, limit: 20 });
 
@@ -52,9 +56,9 @@ const PlaylistTrackList = ({ playlistId }: PlaylistTrackListProps) => {
   const playlistItems = data.pages.flatMap((page) => page.items);
 
   if (playlistItems.length === 0) {
-    return (
-      <EmptyState>아직 곡이 없어요. 마음에 드는 곡을 추가해 보세요!</EmptyState>
-    );
+    return showEmptyMessage ? (
+      <EmptyState>아직 곡이 없어요. "곡 추가"를 눌러 채워보세요!</EmptyState>
+    ) : null;
   }
 
   return (
