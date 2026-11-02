@@ -10,7 +10,7 @@ import useExchangeToken from "./hooks/useExchangeToken";
 // Lazy Loading
 import AppLayout from "./layout/AppLayout";
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
-const SearchPage = lazy(() => import("./pages/SearchPage"));
+const SearchPage = lazy(() => import("./pages/SearchPage/SearchPage"));
 const SearchWithKeywordPage = lazy(
   () => import("./pages/SearchWithKeywordPage")
 );

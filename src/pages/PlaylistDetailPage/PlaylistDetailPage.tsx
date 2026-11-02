@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useState } from "react";
 import { useParams } from "react-router";
 import { Box, Collapse } from "@mui/material";
 import { ErrorBoundary } from "react-error-boundary";
@@ -14,18 +14,16 @@ import PlaylistTrackListSkeleton from "./components/PlaylistTrackListSkeleton";
 
 const PlaylistDetailPage = () => {
   const { id } = useParams<{ id: string }>();
-  // 헤더 정보는 페이지에 꼭 필요 → AppLayout 의 페이지 Suspense 가 기다려 줌
-  const { data: playlist } = useGetPlaylist(id!);
+  return <PlaylistDetailContent key={id} playlistId={id!} />;
+};
+
+const PlaylistDetailContent = ({ playlistId }: { playlistId: string }) => {
+  const { data: playlist } = useGetPlaylist(playlistId);
   const { data: user } = useGetCurrentUserProfile();
 
-  // 남의 플레이리스트면 요청을 보내지 않고 안내만 보여준다
   const canSeeTracks = playlist.owner.id === user?.id || playlist.collaborative;
 
   const [isSearchOpen, setIsSearchOpen] = useState(playlist.items?.total === 0);
-
-  useEffect(() => {
-    setIsSearchOpen(playlist.items?.total === 0);
-  }, [id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Box>
@@ -52,7 +50,7 @@ const PlaylistDetailPage = () => {
           {canSeeTracks && (
             <Collapse in={isSearchOpen} unmountOnExit>
               <PlaylistSearchSection
-                playlistId={id!}
+                playlistId={playlistId}
                 isEmpty={playlist.items?.total === 0}
               />
             </Collapse>
@@ -65,12 +63,11 @@ const PlaylistDetailPage = () => {
           {({ reset }) => (
             <ErrorBoundary
               onReset={reset}
-              resetKeys={[id]}
               fallback={<EmptyState>곡 목록을 불러오지 못했어요.</EmptyState>}
             >
               <Suspense fallback={<PlaylistTrackListSkeleton />}>
                 <PlaylistTrackList
-                  playlistId={id!}
+                  playlistId={playlistId}
                   showEmptyMessage={!isSearchOpen}
                 />
               </Suspense>
