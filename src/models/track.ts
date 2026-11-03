@@ -1,5 +1,6 @@
 import type { ExternalUrls } from "./commonType";
-import type { SimplifiedAlbum, SimplifiedArtist } from "./album";
+import type { SimplifiedAlbum } from "./album";
+import type { SimplifiedArtist } from "./artist";
 
 export interface Track {
   type: "track";

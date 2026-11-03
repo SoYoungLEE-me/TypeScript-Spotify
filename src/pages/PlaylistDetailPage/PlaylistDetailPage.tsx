@@ -6,7 +6,7 @@ import { QueryErrorResetBoundary } from "@tanstack/react-query";
 import useGetPlaylist from "../../hooks/useGetPlaylist";
 import useGetCurrentUserProfile from "../../hooks/useGetCurrentUserProfile";
 import EmptyState from "../../common/components/EmptyState";
-import CoverBackdrop from "./components/CoverBackdrop";
+import CoverBackdrop from "../../common/components/CoverBackdrop";
 import PlaylistHeader from "./components/PlaylistHeader";
 import PlaylistSearchSection from "./components/search/PlaylistSearchSection";
 import PlaylistTrackList from "./components/PlaylistTrackList";

@@ -4,11 +4,12 @@ import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
 
 interface SearchHeaderProps {
+  defaultValue?: string;
   onSearch: (keyword: string) => void;
 }
 
-const SearchHeader = ({ onSearch }: SearchHeaderProps) => {
-  const [value, setValue] = useState("");
+const SearchHeader = ({ defaultValue = "", onSearch }: SearchHeaderProps) => {
+  const [value, setValue] = useState(defaultValue);
 
   return (
     <Box

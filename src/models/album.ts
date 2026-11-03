@@ -1,10 +1,5 @@
 import type { ApiResponse, ExternalUrls, Image } from "./commonType";
-
-export interface SimplifiedArtist {
-  id: string;
-  name: string;
-  external_urls: ExternalUrls;
-}
+import type { SimplifiedArtist } from "./artist";
 
 export interface SimplifiedAlbum {
   id: string;

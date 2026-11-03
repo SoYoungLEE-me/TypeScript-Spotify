@@ -5,7 +5,7 @@ import {
 } from "@tanstack/react-query";
 import { getSearchForItem } from "../apis/searchApi";
 import { clientCredentialTokenQuery } from "./useClientCredentialToken";
-import type { SearchRequest } from "../models/search";
+import { getResultPage, type SearchRequest } from "../models/search";
 
 const useSearchItems = (params: SearchRequest) => {
   const queryClient = useQueryClient();
@@ -21,9 +21,9 @@ const useSearchItems = (params: SearchRequest) => {
     },
     initialPageParam: 0,
     getNextPageParam: (lastPage) => {
-      const tracks = lastPage.tracks;
-      if (!tracks?.next) return undefined;
-      return tracks.offset + tracks.limit;
+      const page = getResultPage(lastPage, params.type[0]);
+      if (!page?.next) return undefined;
+      return page.offset + page.limit;
     },
     placeholderData: keepPreviousData, // 새 결과 올 때까지 이전 결과 유지
   });

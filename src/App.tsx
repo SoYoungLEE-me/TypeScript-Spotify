@@ -12,7 +12,7 @@ import AppLayout from "./layout/AppLayout";
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const SearchPage = lazy(() => import("./pages/SearchPage/SearchPage"));
 const SearchWithKeywordPage = lazy(
-  () => import("./pages/SearchWithKeywordPage")
+  () => import("./pages/SearchWithKeywordPage/SearchWithKeywordPage")
 );
 const PlaylistDetailPage = lazy(
   () => import("./pages/PlaylistDetailPage/PlaylistDetailPage")
