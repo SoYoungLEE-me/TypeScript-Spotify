@@ -25,13 +25,6 @@ const LibraryPlaylist = ({ playlist, isActive }: LibraryPlaylistProps) => {
 
   const trackCount = Math.max(serverCount, pendingCount ?? 0);
 
-  console.log("Playlist 곡 수 확인", {
-    name: playlist.name,
-    serverCount,
-    pendingCount,
-    trackCount,
-  });
-
   return (
     <Link to={`/playlist/${playlist.id}`}>
       <Box
