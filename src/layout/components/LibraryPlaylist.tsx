@@ -1,6 +1,11 @@
 import { Link } from "react-router";
 import { Box, Typography } from "@mui/material";
 import type { SimplifiedPlaylist } from "../../models/playlist";
+import { useSyncExternalStore } from "react";
+import {
+  getPendingCount,
+  subscribePendingCounts,
+} from "../../utils/playlistCountSync";
 
 interface LibraryPlaylistProps {
   playlist: SimplifiedPlaylist;
@@ -10,7 +15,22 @@ interface LibraryPlaylistProps {
 const LibraryPlaylist = ({ playlist, isActive }: LibraryPlaylistProps) => {
   const imageUrl = playlist.images?.[0]?.url;
 
-  const trackCount = playlist.items?.total ?? playlist.tracks?.total ?? 0;
+  const serverCount = playlist.items?.total ?? playlist.tracks?.total ?? 0;
+
+  const pendingCount = useSyncExternalStore(
+    subscribePendingCounts,
+    () => getPendingCount(playlist.owner.id, playlist.id),
+    () => null
+  );
+
+  const trackCount = Math.max(serverCount, pendingCount ?? 0);
+
+  console.log("Playlist 곡 수 확인", {
+    name: playlist.name,
+    serverCount,
+    pendingCount,
+    trackCount,
+  });
 
   return (
     <Link to={`/playlist/${playlist.id}`}>
