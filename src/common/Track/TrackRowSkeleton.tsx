@@ -1,6 +1,6 @@
 import { Box, Skeleton } from "@mui/material";
 import TrackTitleSkeleton from "./TrackTitleSkeleton";
-import { getTrackRowGridSx, hideOnSmall } from "./trackRowGrid";
+import { getTrackRowGridSx, hideOnSmall } from "./styles/trackRowGrid";
 
 interface TrackRowSkeletonProps {
   count?: number;

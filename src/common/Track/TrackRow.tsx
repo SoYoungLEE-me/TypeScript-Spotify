@@ -4,7 +4,7 @@ import type { Track } from "../../models/track";
 import { formatDuration } from "../../utils/formatDuration";
 import AddToPlaylistButton from "../Playlist/AddToPlaylistButton";
 import TrackTitle from "./TrackTitle";
-import { getTrackRowGridSx, hideOnSmall } from "./trackRowGrid";
+import { getTrackRowGridSx, hideOnSmall } from "./styles/trackRowGrid";
 
 interface TrackRowProps {
   track: Track;

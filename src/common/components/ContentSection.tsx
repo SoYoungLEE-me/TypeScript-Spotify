@@ -7,6 +7,7 @@ interface ContentSectionProps {
   caption?: string;
   moreTo?: string;
   onMore?: () => void;
+  moreLabel?: string;
   children: ReactNode;
 }
 
@@ -21,6 +22,7 @@ const ContentSection = ({
   caption,
   moreTo,
   onMore,
+  moreLabel = "모두 보기",
   children,
 }: ContentSectionProps) => (
   <Box component="section" sx={{ mb: 5 }}>
@@ -34,12 +36,12 @@ const ContentSection = ({
       <Box sx={{ flex: 1 }} />
       {moreTo && (
         <Button component={Link} to={moreTo} size="small" sx={moreButtonSx}>
-          모두 보기
+          {moreLabel}
         </Button>
       )}
       {!moreTo && onMore && (
         <Button size="small" onClick={onMore} sx={moreButtonSx}>
-          모두 보기
+          {moreLabel}
         </Button>
       )}
     </Box>
