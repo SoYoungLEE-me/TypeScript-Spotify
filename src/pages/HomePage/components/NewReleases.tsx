@@ -3,7 +3,7 @@ import useGetNewReleases from "../../../hooks/useGetNewReleases";
 import CardGrid from "../../../common/MusicCard/CardGrid";
 import Card from "../../../common/MusicCard/Card";
 import EmptyState from "../../../common/components/EmptyState";
-import { isReissue } from "../../../utils/homeContent";
+import { isReissue } from "../utils/homeContent";
 
 const NewReleases = () => {
   const { data } = useGetNewReleases();

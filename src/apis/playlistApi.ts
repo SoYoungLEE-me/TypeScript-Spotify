@@ -8,7 +8,7 @@ import type {
   AddItemsToPlaylistResponse,
   CreatePlaylistRequest,
 } from "../models/playlist";
-import { spotifyUserGet, spotifyUserPost } from "../utils/userTokenClient";
+import { spotifyUserGet, spotifyUserPost } from "../utils/http/userTokenClient";
 
 export const getCurrentUserPlaylists = async ({
   limit,

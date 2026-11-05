@@ -16,7 +16,7 @@ import LoginIcon from "@mui/icons-material/Login";
 import useGetCurrentUserProfile from "../../hooks/useGetCurrentUserProfile";
 import useGetCurrentUserPlaylists from "../../hooks/useGetCurrentUserPlaylists";
 import useAddItemsToPlaylist from "../../hooks/useAddItemsToPlaylist";
-import { getSpotifyAuthUrl } from "../../utils/auth";
+import { getSpotifyAuthUrl } from "../../utils/auth/auth";
 import CoverImage from "../components/CoverImage";
 
 interface AddToPlaylistButtonProps {

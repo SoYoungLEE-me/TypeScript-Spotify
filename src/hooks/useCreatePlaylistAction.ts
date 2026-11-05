@@ -2,7 +2,7 @@ import { useNavigate } from "react-router";
 import useCreatePlaylist from "./useCreatePlaylist";
 import useGetCurrentUserProfile from "./useGetCurrentUserProfile";
 import useGetCurrentUserPlaylists from "./useGetCurrentUserPlaylists";
-import { getSpotifyAuthUrl } from "../utils/auth";
+import { getSpotifyAuthUrl } from "../utils/auth/auth";
 
 const useCreatePlaylistAction = () => {
   const navigate = useNavigate();

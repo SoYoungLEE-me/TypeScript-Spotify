@@ -3,7 +3,7 @@ import { Box, Skeleton, Typography } from "@mui/material";
 import useGetCurrentUserProfile from "../../../hooks/useGetCurrentUserProfile";
 import useGetCurrentUserPlaylists from "../../../hooks/useGetCurrentUserPlaylists";
 import CoverImage from "../../../common/components/CoverImage";
-import { getGreeting } from "../../../utils/homeContent";
+import { getGreeting } from "../utils/homeContent";
 
 const tileGridSx = {
   display: "grid",

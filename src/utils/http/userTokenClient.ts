@@ -1,6 +1,6 @@
 import axios from "axios";
-import { SPOTIFY_BASE_URL } from "../configs/config";
-import { refreshAccessToken } from "../apis/authApi";
+import { SPOTIFY_BASE_URL } from "../../configs/config";
+import { refreshAccessToken } from "../../apis/authApi";
 import { handleAxiosError } from "./handleAxiosError";
 
 export const saveUserToken = (data: {

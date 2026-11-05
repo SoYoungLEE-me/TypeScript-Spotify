@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { Box, Typography } from "@mui/material";
-import { GENRES } from "../../../utils/homeContent";
+import { GENRES } from "../utils/homeContent";
 
 const GenreShortcuts = () => (
   <Box

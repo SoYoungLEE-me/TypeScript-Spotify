@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import { getSpotifyAuthUrl } from "../../utils/auth";
+import { getSpotifyAuthUrl } from "../../utils/auth/auth";
 
 const LoginButton = () => {
   const login = () => {

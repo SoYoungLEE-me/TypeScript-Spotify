@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { exchangeToken } from "../apis/authApi";
 import type { ExchangeTokenResponse } from "../models/auth";
-import { saveUserToken } from "../utils/userTokenClient";
+import { saveUserToken } from "../utils/http/userTokenClient";
 
 const useExchangeToken = () => {
   const queryClient = useQueryClient();

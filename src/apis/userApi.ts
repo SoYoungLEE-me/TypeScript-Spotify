@@ -6,7 +6,7 @@ import type {
   GetTopItemsRequest,
   GetTopTracksResponse,
 } from "../models/listening";
-import { spotifyUserGet } from "../utils/userTokenClient";
+import { spotifyUserGet } from "../utils/http/userTokenClient";
 
 export const getCurrentUserProfile = (): Promise<User> => {
   return spotifyUserGet<User>("/me");
