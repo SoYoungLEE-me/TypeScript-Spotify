@@ -13,10 +13,6 @@ export interface SimplifiedAlbum {
   uri: string;
 }
 
-export interface GetNewReleasesResponse {
-  albums: ApiResponse<SimplifiedAlbum>;
-}
-
 //앨범 상세 정보
 export interface SimplifiedTrack {
   id: string;

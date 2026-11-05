@@ -1,5 +1,6 @@
 import { useQueryClient, useSuspenseQuery } from "@tanstack/react-query";
-import { getNewReleases } from "../apis/albumApi";
+import { getSearchForItem } from "../apis/searchApi";
+import { SEARCH_TYPE } from "../models/search";
 import { clientCredentialTokenQuery } from "./useClientCredentialToken";
 
 const useGetNewReleases = () => {
@@ -12,8 +13,14 @@ const useGetNewReleases = () => {
       const { access_token } = await queryClient.fetchQuery(
         clientCredentialTokenQuery
       );
-      return getNewReleases(access_token);
+      return getSearchForItem(access_token, {
+        q: "tag:new",
+        type: [SEARCH_TYPE.Album],
+        market: "KR",
+        limit: 10,
+      });
     },
+    staleTime: 1000 * 60 * 30,
   });
 };
 

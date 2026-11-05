@@ -6,7 +6,7 @@ import { Link } from "react-router";
 
 const NewReleases = () => {
   const { data } = useGetNewReleases();
-  const albums = data.albums.items;
+  const albums = data.albums?.items.slice(0, 6) ?? [];
 
   return (
     <Box component="section" sx={{ mb: 4 }}>
