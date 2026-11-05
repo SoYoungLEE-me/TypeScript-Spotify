@@ -12,14 +12,14 @@ const REISSUE_PATTERN = /anniversary|deluxe|remaster/i;
 export const isReissue = (albumName: string) => REISSUE_PATTERN.test(albumName);
 
 export const GENRES = [
-  { label: "K-pop", keyword: "k-pop", genre: "k-pop", color: "#993c1d" },
-  { label: "발라드", keyword: "발라드", genre: "k-ballad", color: "#3c3489" },
-  { label: "인디", keyword: "indie", genre: "k-indie", color: "#085041" },
-  { label: "힙합", keyword: "hip hop", genre: "k-rap", color: "#72243e" },
-  { label: "R&B", keyword: "r&b", genre: "korean r&b", color: "#633806" },
-  { label: "록", keyword: "rock", genre: "k-rock", color: "#0c447c" },
-  { label: "OST", keyword: "ost", genre: "korean ost", color: "#3b6d11" },
-  { label: "재즈", keyword: "jazz", genre: "jazz", color: "#444441" },
+  { label: "K-pop", query: "k-pop" },
+  { label: "발라드", query: "발라드" },
+  { label: "인디", query: "인디" },
+  { label: "힙합", query: "힙합" },
+  { label: "R&B", query: "r&b" },
+  { label: "록", query: "rock" },
+  { label: "OST", query: "ost" },
+  { label: "재즈", query: "jazz" },
 ];
 
 export const pickTodayArtistId = (albums: SimplifiedAlbum[], date: Date) => {

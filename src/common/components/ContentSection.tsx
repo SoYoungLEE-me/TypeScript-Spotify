@@ -25,7 +25,7 @@ const ContentSection = ({
   moreLabel = "모두 보기",
   children,
 }: ContentSectionProps) => (
-  <Box component="section" sx={{ mb: 5 }}>
+  <Box component="section" sx={{ mb: { xs: 6, md: 7 } }}>
     <Box sx={{ display: "flex", alignItems: "baseline", gap: 1.5, mb: 1.5 }}>
       <Typography variant="h1">{title}</Typography>
       {caption && (

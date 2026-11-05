@@ -9,11 +9,15 @@ import LoginBanner from "./components/LoginBanner";
 import TopTracks from "./components/TopTracks";
 import RecentlyPlayed from "./components/RecentlyPlayed";
 import TopArtists from "./components/TopArtists";
+import TodayArtist, { TodayArtistSkeleton } from "./components/TodayArtist";
 import NewReleases from "./components/NewReleases";
-import GenreShortcuts from "./components/GenreShortcuts";
+import GenreTracks from "./components/GenreTracks";
+import YearAgoAlbums from "./components/YearAgoAlbums";
+import RecentAlbums from "./components/RecentAlbums";
 
 const RELOGIN_MESSAGE =
   "기록을 불러오지 못했어요. 로그아웃 후 다시 로그인해 보세요.";
+const TEN_YEARS_AGO = new Date().getFullYear() - 10;
 
 const HomePage = () => {
   const { data: user, isPending } = useGetCurrentUserProfile();
@@ -58,6 +62,15 @@ const HomePage = () => {
         </>
       )}
 
+      <ContentSection title="오늘의 아티스트" caption="매일 바뀌어요">
+        <SectionBoundary
+          fallback={<TodayArtistSkeleton />}
+          errorMessage="오늘의 아티스트를 불러오지 못했어요."
+        >
+          <TodayArtist />
+        </SectionBoundary>
+      </ContentSection>
+
       <ContentSection title="새로 나온 앨범" caption="최근 2주">
         <SectionBoundary
           fallback={<CardGridSkeleton />}
@@ -67,11 +80,23 @@ const HomePage = () => {
         </SectionBoundary>
       </ContentSection>
 
-      {isLoggedOut && (
-        <ContentSection title="장르로 둘러보기">
-          <GenreShortcuts />
-        </ContentSection>
-      )}
+      <ContentSection title="장르별 요즘 곡" caption="올해 나온 곡">
+        <GenreTracks />
+      </ContentSection>
+
+      <ContentSection
+        title="10년 전 이맘때"
+        caption={`${TEN_YEARS_AGO}년에 나온 앨범`}
+      >
+        <SectionBoundary
+          fallback={<CardGridSkeleton />}
+          errorMessage="앨범을 불러오지 못했어요."
+        >
+          <YearAgoAlbums year={TEN_YEARS_AGO} />
+        </SectionBoundary>
+      </ContentSection>
+
+      <RecentAlbums />
     </Box>
   );
 };

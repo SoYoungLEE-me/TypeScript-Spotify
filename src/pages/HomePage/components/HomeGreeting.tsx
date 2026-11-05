@@ -20,7 +20,7 @@ const HomeGreeting = () => {
   const playlists = data?.pages[0]?.items.slice(0, 8) ?? [];
 
   return (
-    <Box component="section" sx={{ mb: 5 }}>
+    <Box component="section" sx={{ mb: { xs: 6, md: 7 } }}>
       <Typography
         variant="h1"
         sx={{ fontSize: { xs: "24px", md: "32px" }, mb: 2 }}

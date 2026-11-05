@@ -7,10 +7,10 @@ import { GENRES } from "../utils/homeContent";
 import TrackColumns from "./TrackColumns";
 
 const GenreTracks = () => {
-  const [genre, setGenre] = useState(GENRES[0].genre);
+  const [query, setQuery] = useState(GENRES[0].query);
   const year = new Date().getFullYear();
   const { data, isLoading, isError, isPlaceholderData } = useGetGenreTracks(
-    genre,
+    query,
     year
   );
   const tracks = data?.tracks?.items.slice(0, 6) ?? [];
@@ -19,12 +19,12 @@ const GenreTracks = () => {
     <Box>
       <Box sx={{ display: "flex", gap: 1, flexWrap: "wrap", mb: 2 }}>
         {GENRES.map((item) => {
-          const isActive = item.genre === genre;
+          const isActive = item.query === query;
           return (
             <Chip
-              key={item.genre}
+              key={item.query}
               label={item.label}
-              onClick={() => setGenre(item.genre)}
+              onClick={() => setQuery(item.query)}
               sx={{
                 fontWeight: 700,
                 bgcolor: isActive ? "primary.main" : "action.hover",
