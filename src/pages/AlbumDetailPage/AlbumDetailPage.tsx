@@ -7,6 +7,8 @@ import type { SimplifiedTrack } from "../../models/album";
 import CoverImage from "../../common/components/CoverImage";
 import TrackTitle from "../../common/Track/TrackTitle";
 import AddToPlaylistButton from "../../common/Playlist/AddToPlaylistButton";
+import { useEffect } from "react";
+import { addRecentAlbum } from "../../utils/recentAlbums";
 
 const trackGridSx = {
   display: "grid",
@@ -19,6 +21,10 @@ const trackGridSx = {
 const AlbumDetailPage = () => {
   const { id } = useParams<{ id: string }>();
   const { data: album } = useGetAlbum(id!);
+
+  useEffect(() => {
+    addRecentAlbum(album);
+  }, [album]);
 
   const artistNames = album.artists.map((artist) => artist.name).join(", ");
   const releaseYear = album.release_date.slice(0, 4);

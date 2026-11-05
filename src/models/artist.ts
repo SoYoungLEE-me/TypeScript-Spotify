@@ -10,3 +10,10 @@ export interface Artist extends SimplifiedArtist {
   images: Image[];
   uri: string;
 }
+
+export interface GetArtistAlbumsRequest {
+  include_groups?: string;
+  market?: string;
+  limit?: number;
+  offset?: number;
+}
