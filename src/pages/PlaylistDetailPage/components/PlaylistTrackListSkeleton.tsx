@@ -1,6 +1,6 @@
 import { Box, Skeleton } from "@mui/material";
-import TrackTitleSkeleton from "../../../common/Track/TrackRowSkeleton";
-import { hideOnSmall, trackGridSx } from "./trackGrid";
+import TrackTitleSkeleton from "../../../common/Track/TrackTitleSkeleton";
+import { hideOnSmall, trackGridSx } from "../styles/trackGrid";
 
 export const PlaylistTrackRowSkeleton = () => (
   <Box sx={{ ...trackGridSx, py: 1 }}>

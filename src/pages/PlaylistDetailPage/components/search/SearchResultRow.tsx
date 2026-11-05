@@ -3,7 +3,7 @@ import type { Track } from "../../../../models/track";
 import { formatDuration } from "../../../../utils/formatDuration";
 import TrackTitle from "../../../../common/Track/TrackTitle";
 import AddTrackButton from "./AddTrackButton";
-import { hideOnSmall, searchGridSx } from "./searchGrid";
+import { hideOnSmall, searchGridSx } from "../../styles/searchGrid";
 
 interface SearchResultRowProps {
   track: Track;

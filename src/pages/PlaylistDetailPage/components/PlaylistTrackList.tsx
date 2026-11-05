@@ -9,8 +9,8 @@ import Card from "../../../common/MusicCard/Card";
 import PlaylistTrackRow from "./PlaylistTrackRow";
 import { PlaylistTrackRowSkeleton } from "./PlaylistTrackListSkeleton";
 import ViewModeToggle, { type ViewMode } from "./ViewModeToggle";
-import { getItemDisplay } from "./playlistItem";
-import { hideOnSmall, trackGridSx } from "./trackGrid";
+import { getItemDisplay } from "../utils/playlistItem";
+import { hideOnSmall, trackGridSx } from "../styles/trackGrid";
 
 const VIEW_MODE_KEY = "playlist_view_mode";
 

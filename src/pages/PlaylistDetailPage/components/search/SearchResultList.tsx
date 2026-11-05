@@ -4,9 +4,9 @@ import { useInView } from "react-intersection-observer";
 import useSearchItems from "../../../../hooks/useSearchItems";
 import { SEARCH_TYPE } from "../../../../models/search";
 import EmptyState from "../../../../common/components/EmptyState";
-import TrackTitleSkeleton from "../../../../common/Track/TrackRowSkeleton";
+import TrackTitleSkeleton from "../../../../common/Track/TrackTitleSkeleton";
 import SearchResultRow from "./SearchResultRow";
-import { hideOnSmall, searchGridSx } from "./searchGrid";
+import { hideOnSmall, searchGridSx } from "../../styles/searchGrid";
 
 const SearchResultRowSkeleton = () => (
   <Box sx={searchGridSx}>

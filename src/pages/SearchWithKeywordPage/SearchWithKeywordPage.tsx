@@ -85,7 +85,6 @@ const SearchWithKeywordPage = () => {
               result={result}
               keyword={keyword}
               onChangeTab={handleChangeTab}
-              onShowArtistTracks={handleShowArtistTracks}
             />
           ))}
 

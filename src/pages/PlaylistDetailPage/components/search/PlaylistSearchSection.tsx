@@ -6,7 +6,7 @@ import {
   addRecentSearch,
   loadRecentSearches,
   removeRecentSearch,
-} from "./recentSearches";
+} from "../../utils/recentSearches";
 
 interface PlaylistSearchSectionProps {
   playlistId: string;

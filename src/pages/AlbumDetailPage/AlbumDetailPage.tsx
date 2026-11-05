@@ -6,7 +6,7 @@ import { formatDuration } from "../../utils/formatDuration";
 import type { SimplifiedTrack } from "../../models/album";
 import CoverImage from "../../common/components/CoverImage";
 import TrackTitle from "../../common/Track/TrackTitle";
-import AddToPlaylistButton from "../../common/components/Playlist/AddToPlaylistButton";
+import AddToPlaylistButton from "../../common/Playlist/AddToPlaylistButton";
 
 const trackGridSx = {
   display: "grid",

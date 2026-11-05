@@ -13,11 +13,11 @@ import {
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import LoginIcon from "@mui/icons-material/Login";
-import useGetCurrentUserProfile from "../../../hooks/useGetCurrentUserProfile";
-import useGetCurrentUserPlaylists from "../../../hooks/useGetCurrentUserPlaylists";
-import useAddItemsToPlaylist from "../../../hooks/useAddItemsToPlaylist";
-import { getSpotifyAuthUrl } from "../../../utils/auth";
-import CoverImage from "../../components/CoverImage";
+import useGetCurrentUserProfile from "../../hooks/useGetCurrentUserProfile";
+import useGetCurrentUserPlaylists from "../../hooks/useGetCurrentUserPlaylists";
+import useAddItemsToPlaylist from "../../hooks/useAddItemsToPlaylist";
+import { getSpotifyAuthUrl } from "../../utils/auth";
+import CoverImage from "../components/CoverImage";
 
 interface AddToPlaylistButtonProps {
   uris: string[]; // 추가할 곡들 uri

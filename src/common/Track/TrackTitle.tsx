@@ -5,10 +5,10 @@ interface TrackTitleProps {
   name: string;
   subText: string; // 가수 이름 등등..
   explicit?: boolean;
-  thumbnail?: string; // 넘기면 왼쪽에 작은 커버를 보여준다
+  thumbnail?: string; // 넘기면 왼쪽에 작은 커버를 보여주기
 }
 
-// 곡 제목 + 19금(E) 배지 + 가수 이름, 길면 자르기
+// 곡 제목 + 19금 배지 + 가수 이름 / 길면 자르기
 const TrackTitle = ({
   name,
   subText,

@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import { Box, Button, Typography } from "@mui/material";
 import CoverImage from "../../../common/components/CoverImage";
-import AddToPlaylistButton from "../../../common/components/Playlist/AddToPlaylistButton";
+import AddToPlaylistButton from "../../../common/Playlist/AddToPlaylistButton";
 import { getTopResultImage, type TopResult } from "../utils/pickTopResult";
 
 interface TopResultHeroProps {

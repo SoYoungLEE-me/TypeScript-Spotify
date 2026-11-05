@@ -3,8 +3,8 @@ import type { PlaylistItem } from "../../../models/playlist";
 import { formatDuration } from "../../../utils/formatDuration";
 import { formatRelativeDate } from "../../../utils/formatRelativeDate";
 import TrackTitle from "../../../common/Track/TrackTitle";
-import { getItemDisplay } from "./playlistItem";
-import { hideOnSmall, trackGridSx } from "./trackGrid";
+import { getItemDisplay } from "../utils/playlistItem";
+import { hideOnSmall, trackGridSx } from "../styles/trackGrid";
 
 interface PlaylistTrackRowProps {
   index: number;

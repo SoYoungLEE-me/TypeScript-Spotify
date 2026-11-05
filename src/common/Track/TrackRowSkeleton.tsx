@@ -1,28 +1,30 @@
 import { Box, Skeleton } from "@mui/material";
+import TrackTitleSkeleton from "./TrackTitleSkeleton";
+import { getTrackRowGridSx, hideOnSmall } from "./trackRowGrid";
 
-interface TrackTitleSkeletonProps {
-  withThumbnail?: boolean;
+interface TrackRowSkeletonProps {
+  count?: number;
+  compact?: boolean;
 }
 
-const TrackTitleSkeleton = ({
-  withThumbnail = false,
-}: TrackTitleSkeletonProps) => {
-  return (
-    <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-      {withThumbnail && (
-        <Skeleton
-          variant="rounded"
-          width={40}
-          height={40}
-          sx={{ flexShrink: 0 }}
-        />
-      )}
-      <Box sx={{ flex: 1 }}>
-        <Skeleton variant="text" width="60%" />
-        <Skeleton variant="text" width="35%" />
+const TrackRowSkeleton = ({
+  count = 4,
+  compact = false,
+}: TrackRowSkeletonProps) => (
+  <Box>
+    {Array.from({ length: count }, (_, i) => (
+      <Box key={i} sx={getTrackRowGridSx(compact, false)}>
+        <TrackTitleSkeleton withThumbnail />
+        {!compact && (
+          <>
+            <Skeleton variant="text" width="60%" sx={hideOnSmall} />
+            <Skeleton variant="text" width={32} />
+          </>
+        )}
+        <Skeleton variant="circular" width={32} height={32} />
       </Box>
-    </Box>
-  );
-};
+    ))}
+  </Box>
+);
 
-export default TrackTitleSkeleton;
+export default TrackRowSkeleton;

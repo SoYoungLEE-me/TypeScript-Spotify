@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 import type { Track } from "../../../models/track";
 import { formatDuration } from "../../../utils/formatDuration";
 import TrackTitle from "../../../common/Track/TrackTitle";
-import AddToPlaylistButton from "../../../common/components/Playlist/AddToPlaylistButton";
+import AddToPlaylistButton from "../../../common/Playlist/AddToPlaylistButton";
 import { hideOnSmall, searchTrackGridSx } from "../styles/searchTrackGrid";
 
 const SearchTrackRow = ({ track }: { track: Track }) => {
