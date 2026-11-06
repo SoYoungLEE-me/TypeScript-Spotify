@@ -7,6 +7,7 @@ export interface SimplifiedAlbum {
   album_type: string;
   total_tracks: number;
   release_date: string;
+  release_date_precision: "year" | "month" | "day";
   images: Image[];
   artists: SimplifiedArtist[];
   external_urls: ExternalUrls;

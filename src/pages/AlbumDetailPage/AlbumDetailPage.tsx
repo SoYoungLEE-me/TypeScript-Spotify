@@ -9,6 +9,7 @@ import TrackTitle from "../../common/Track/TrackTitle";
 import AddToPlaylistButton from "../../common/Playlist/AddToPlaylistButton";
 import { useEffect } from "react";
 import { addRecentAlbum } from "../../utils/recentAlbums";
+import { formatReleaseDate } from "../../utils/formatReleaseDate";
 
 const trackGridSx = {
   display: "grid",
@@ -27,7 +28,10 @@ const AlbumDetailPage = () => {
   }, [album]);
 
   const artistNames = album.artists.map((artist) => artist.name).join(", ");
-  const releaseYear = album.release_date.slice(0, 4);
+  const releaseDate = formatReleaseDate(
+    album.release_date,
+    album.release_date_precision
+  );
   const tracks = album.tracks.items;
 
   const discs = tracks.reduce<Record<number, SimplifiedTrack[]>>(
@@ -105,7 +109,7 @@ const AlbumDetailPage = () => {
             >
               {artistNames}
             </Box>
-            {` • ${releaseYear} • ${album.total_tracks}곡`}
+            {` • ${releaseDate} • ${album.total_tracks}곡`}
           </Typography>
 
           <Box
