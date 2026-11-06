@@ -7,10 +7,26 @@ interface CardGridProps {
 }
 
 const singleRowSx = {
-  "& > :nth-of-type(n + 3)": { display: { xs: "none", sm: "block" } },
-  "& > :nth-of-type(n + 4)": { display: { xs: "none", md: "block" } },
-  "& > :nth-of-type(n + 5)": { display: { xs: "none", lg: "block" } },
-  "& > :nth-of-type(n + 7)": { display: "none" },
+  gridTemplateColumns: {
+    xs: "none",
+    sm: "repeat(3, minmax(0, 1fr))",
+    md: "repeat(4, minmax(0, 1fr))",
+    lg: "repeat(6, minmax(0, 1fr))",
+  },
+  gridAutoFlow: { xs: "column", sm: "row" },
+  gridAutoColumns: { xs: "42%", sm: "auto" },
+  overflowX: { xs: "auto", sm: "visible" },
+  scrollSnapType: { xs: "x mandatory", sm: "none" },
+  scrollbarWidth: "none",
+  "&::-webkit-scrollbar": { display: "none" },
+  "& > *": { scrollSnapAlign: "start" },
+  "& > :nth-of-type(n + 4)": {
+    display: { xs: "block", sm: "none", md: "block" },
+  },
+  "& > :nth-of-type(n + 5)": {
+    display: { xs: "block", sm: "none", lg: "block" },
+  },
+  "& > :nth-of-type(n + 7)": { display: { xs: "block", sm: "none" } },
 };
 
 const CardGrid = ({ children, singleRow = false }: CardGridProps) => {

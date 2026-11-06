@@ -27,7 +27,9 @@ const ContentSection = ({
 }: ContentSectionProps) => (
   <Box component="section" sx={{ mb: { xs: 6, md: 7 } }}>
     <Box sx={{ display: "flex", alignItems: "baseline", gap: 1.5, mb: 1.5 }}>
-      <Typography variant="h1">{title}</Typography>
+      <Typography variant="h1" sx={{ flexShrink: 0 }}>
+        {title}
+      </Typography>
       {caption && (
         <Typography variant="body2" color="text.secondary" noWrap>
           {caption}

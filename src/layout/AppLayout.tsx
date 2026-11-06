@@ -10,16 +10,20 @@ import Navbar from "./components/Navbar";
 import LoadingSpinner from "../common/components/LoadingSpinner";
 import ErrorMessage from "../common/components/ErrorMessage";
 import Library from "./components/Library";
+import MobileTabBar from "./components/MobileTabBar";
 
-const Layout = styled("div")({
+const Layout = styled("div")(({ theme }) => ({
   display: "flex",
-  height: "100vh",
+  height: "100dvh",
   padding: "10px",
   gap: "12px",
   boxSizing: "border-box",
   overflow: "hidden",
-});
-
+  [theme.breakpoints.down("sm")]: {
+    flexDirection: "column",
+    gap: "8px",
+  },
+}));
 const Sidebar = styled("div")(({ theme }) => ({
   width: "250px",
   display: "flex",
@@ -112,6 +116,7 @@ const AppLayout = () => {
         sx={{
           flex: 1,
           minWidth: 0,
+          minHeight: 0,
           display: "flex",
           flexDirection: "column",
           padding: "0 20px 20px",
@@ -149,6 +154,7 @@ const AppLayout = () => {
           </QueryErrorResetBoundary>
         </Box>
       </ContentBox>
+      <MobileTabBar />
     </Layout>
   );
 };

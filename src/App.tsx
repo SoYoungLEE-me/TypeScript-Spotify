@@ -17,7 +17,7 @@ const SearchWithKeywordPage = lazy(
 const PlaylistDetailPage = lazy(
   () => import("./pages/PlaylistDetailPage/PlaylistDetailPage")
 );
-const PlaylistPage = lazy(() => import("./pages/PlaylistPage"));
+const LibraryPage = lazy(() => import("./pages/LibraryPage/LibraryPage"));
 const AlbumDetailPage = lazy(
   () => import("./pages/AlbumDetailPage/AlbumDetailPage")
 );
@@ -87,7 +87,7 @@ function App() {
                   element={<SearchWithKeywordPage />}
                 />
                 <Route path="/playlist/:id" element={<PlaylistDetailPage />} />
-                <Route path="/playlist" element={<PlaylistPage />} />
+                <Route path="library" element={<LibraryPage />} />
                 <Route path="/album/:id" element={<AlbumDetailPage />} />
               </Route>
             </Routes>
